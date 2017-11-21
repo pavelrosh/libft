@@ -1,17 +1,28 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/13 14:32:01 by proshchy          #+#    #+#             */
+/*   Updated: 2017/11/17 19:20:58 by proshchy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static	long int	if_negative(long int n)
+#include "libft.h"
+
+static long int		if_negative(long int n)
 {
-	return ((n < 0)? -n : n); 
+	return ((n < 0) ? -n : n);
 }
 
-static int	str_len(long int n)
+static int			str_len(long int n)
 {
-	int len;
-	long int n_tmp;
+	int			len;
+	long int	n_tmp;
 
-	n = n_tmp;
+	n_tmp = n;
 	len = 0;
 	while (n != 0)
 	{
@@ -27,7 +38,7 @@ static int	str_len(long int n)
 	return (0);
 }
 
-static	char	ft_nbr(int n)
+static char			ft_nbr(int n)
 {
 	char c;
 
@@ -35,19 +46,19 @@ static	char	ft_nbr(int n)
 	return (c);
 }
 
-char	*ft_itoa(int n)
+char				*ft_itoa(int n)
 {
-	char	*res;
-	int 	len;
-	int 	tmp;
-	long int n_tmp;
-	int minus;
+	char		*res;
+	int			len;
+	int			tmp;
+	int			minus;
+	long int	n_tmp;
 
 	minus = (n < 0) ? -1 : 1;
 	tmp = 0;
 	n_tmp = if_negative(n);
-	len = str_len(n_tmp);
-	if((res = (char *)malloc(sizeof(res) * (len + 1))) != NULL)
+	len = str_len(n);
+	if ((res = (char *)malloc(sizeof(res) * (len + 1))) != NULL)
 	{
 		res[len--] = '\0';
 		while (len >= 0)
@@ -55,10 +66,9 @@ char	*ft_itoa(int n)
 			tmp = n_tmp % 10;
 			n_tmp /= 10;
 			if (len == 0 && minus == -1)
-				res[len] = '-';
+				res[len--] = '-';
 			else
-				res[len] = ft_nbr(tmp);
-			len--;
+				res[len--] = ft_nbr(tmp);
 		}
 		return (res);
 	}

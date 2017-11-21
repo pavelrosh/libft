@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/03 11:06:48 by proshchy          #+#    #+#             */
-/*   Updated: 2017/11/17 19:41:53 by proshchy         ###   ########.fr       */
+/*   Created: 2017/10/31 13:34:34 by proshchy          #+#    #+#             */
+/*   Updated: 2017/11/20 17:57:42 by proshchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *str, const char *nl, size_t len)
 {
-	unsigned char	*new_src;
-	unsigned char	*new_dst;
-	int				i;
+	size_t nl_len;
 
-	i = -1;
-	new_src = (unsigned char *)src;
-	new_dst = (unsigned char *)dest;
-	if (new_src < new_dst)
-		while ((int)(--n) >= 0)
-			*(new_dst + n) = *(new_src + n);
-	else
-		while (++i < (int)n)
-			*(new_dst + i) = *(new_src + i);
-	return (dest);
+	if (*nl == '\0')
+		return ((char *)str);
+	nl_len = ft_strlen(nl);
+	while (*str != '\0' && len-- >= nl_len)
+	{
+		if (*str == *nl && ft_memcmp(str, nl, nl_len) == 0)
+			return ((char *)str);
+		str++;
+	}
+	return (NULL);
 }
