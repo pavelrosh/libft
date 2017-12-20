@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/03 11:06:48 by proshchy          #+#    #+#             */
-/*   Updated: 2017/11/17 19:41:53 by proshchy         ###   ########.fr       */
+/*   Created: 2017/11/21 11:27:19 by proshchy          #+#    #+#             */
+/*   Updated: 2017/11/21 11:30:21 by proshchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int		ft_islower(int c)
 {
-	unsigned char	*new_src;
-	unsigned char	*new_dst;
-	int				i;
-
-	i = -1;
-	new_src = (unsigned char *)src;
-	new_dst = (unsigned char *)dest;
-	if (new_src < new_dst)
-		while ((int)(--n) >= 0)
-			*(new_dst + n) = *(new_src + n);
+	if (c >= 97 && c <= 122)
+		return(1);
 	else
-		while (++i < (int)n)
-			*(new_dst + i) = *(new_src + i);
-	return (dest);
+		return(0);
+	return(0);
 }

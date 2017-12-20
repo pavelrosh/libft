@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/03 11:06:48 by proshchy          #+#    #+#             */
-/*   Updated: 2017/11/17 19:41:53 by proshchy         ###   ########.fr       */
+/*   Created: 2017/11/09 14:20:24 by proshchy          #+#    #+#             */
+/*   Updated: 2017/11/17 19:38:48 by proshchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*new_src;
-	unsigned char	*new_dst;
-	int				i;
+	int		len;
+	char	*new_str;
 
-	i = -1;
-	new_src = (unsigned char *)src;
-	new_dst = (unsigned char *)dest;
-	if (new_src < new_dst)
-		while ((int)(--n) >= 0)
-			*(new_dst + n) = *(new_src + n);
-	else
-		while (++i < (int)n)
-			*(new_dst + i) = *(new_src + i);
-	return (dest);
+	if (s1 != NULL && s2 != NULL)
+	{
+		len = ft_strlen(s1) + ft_strlen(s2);
+		if ((new_str = (char *)malloc(sizeof(char) * (len + 1))) != NULL)
+		{
+			ft_strcpy(new_str, s1);
+			ft_strcat(new_str, s2);
+			return (new_str);
+		}
+	}
+	return (NULL);
 }

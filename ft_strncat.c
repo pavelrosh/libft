@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/03 11:06:48 by proshchy          #+#    #+#             */
-/*   Updated: 2017/11/17 19:41:53 by proshchy         ###   ########.fr       */
+/*   Created: 2017/10/30 16:20:34 by proshchy          #+#    #+#             */
+/*   Updated: 2017/11/07 18:15:34 by proshchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	unsigned char	*new_src;
-	unsigned char	*new_dst;
-	int				i;
+	int len;
+	int i;
 
-	i = -1;
-	new_src = (unsigned char *)src;
-	new_dst = (unsigned char *)dest;
-	if (new_src < new_dst)
-		while ((int)(--n) >= 0)
-			*(new_dst + n) = *(new_src + n);
-	else
-		while (++i < (int)n)
-			*(new_dst + i) = *(new_src + i);
-	return (dest);
+	i = 0;
+	len = ft_strlen(s1);
+	while ((s2[i]) && n > 0)
+	{
+		s1[len + i] = s2[i];
+		i++;
+		n--;
+	}
+	s1[len + i] = '\0';
+	return (s1);
 }

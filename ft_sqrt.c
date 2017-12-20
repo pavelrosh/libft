@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proshchy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/03 11:06:48 by proshchy          #+#    #+#             */
-/*   Updated: 2017/11/17 19:41:53 by proshchy         ###   ########.fr       */
+/*   Created: 2017/10/24 12:28:04 by proshchy          #+#    #+#             */
+/*   Updated: 2017/10/24 13:21:55 by proshchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_sqrt(int nb)
 {
-	unsigned char	*new_src;
-	unsigned char	*new_dst;
-	int				i;
+	int multipl;
+	int res;
 
-	i = -1;
-	new_src = (unsigned char *)src;
-	new_dst = (unsigned char *)dest;
-	if (new_src < new_dst)
-		while ((int)(--n) >= 0)
-			*(new_dst + n) = *(new_src + n);
-	else
-		while (++i < (int)n)
-			*(new_dst + i) = *(new_src + i);
-	return (dest);
+	multipl = 1;
+	res = 1;
+	if (nb <= 0)
+		return (0);
+	while (res)
+	{
+		if (res == nb)
+			return (res / (multipl - 1));
+		else if (res > nb)
+			return (0);
+		res = multipl * multipl;
+		multipl++;
+	}
+	return (res);
 }
